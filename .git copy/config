@@ -1,0 +1,17 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "main"]
+	url = https://github.com/EarlDinosaur/Earl.git
+	fetch = +refs/heads/*:refs/remotes/main/*
+[branch "master"]
+	remote = main
+	merge = refs/heads/master
+[branch "main"]
+	remote = main
+	merge = refs/heads/main
+	vscode-merge-base = main/main
