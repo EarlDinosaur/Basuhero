@@ -345,12 +345,12 @@ function love.keypressed(key)
     if gameState == "menu" then
         handleMenuInput(key)
     elseif gameState == "levelSelect" then
-        if key == "up" then
+        if key == "up" or key == "w" then
             selectedLevelOption = selectedLevelOption - 1
             if selectedLevelOption < 1 then 
                 selectedLevelOption = #levelSelectOptions
             end
-        elseif key == "down" then
+        elseif key == "down" or key == "s" then
             selectedLevelOption = selectedLevelOption + 1
             if selectedLevelOption > #levelSelectOptions then
                 selectedLevelOption = 1
@@ -399,12 +399,12 @@ function love.keypressed(key)
         end
 
     elseif gameState == "gameOver" then 
-        if key == "up" then
+        if key == "up" or key == "w" then
             selectedGameOverOption = selectedGameOverOption - 1
             if selectedGameOverOption < 1 then 
                 selectedGameOverOption = #gameOverOptions
             end
-        elseif key == "down" then
+        elseif key == "down" or key == "s" then
             selectedGameOverOption = selectedGameOverOption + 1
             if selectedGameOverOption > #gameOverOptions then
                 selectedGameOverOption = 1
@@ -442,12 +442,12 @@ function handleMenuInput(key)
         end
     end
 
-    if key == "up" then
+    if key == "up" or key == "w" then
         selectedOption = selectedOption - 1
         if selectedOption < 1 then 
             selectedOption = #menuOptions[menuState]
         end
-    elseif key == "down" then
+    elseif key == "down" or key == "s" then
         selectedOption = selectedOption + 1
         if selectedOption > #menuOptions[menuState] then
             selectedOption = 1
