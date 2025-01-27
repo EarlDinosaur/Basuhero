@@ -26,6 +26,11 @@ function menu.draw(backgroundImages, backgroundTimer, backgroundTransitionTime, 
         end
         
     else
+        if menuState == "options" then
+            -- Add semi-transparent black background
+            love.graphics.setColor(0, 0, 0, 0.7)  -- Black with 70% opacity
+            love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+        end
         -- Draw logo image
         love.graphics.setColor(1, 1, 1)
         local screenWidth, screenHeight = love.graphics.getDimensions()
