@@ -4,6 +4,10 @@ function menu.draw(backgroundImages, backgroundTimer, backgroundTransitionTime, 
     -- Draw animated background
     menu.drawGradient(backgroundImages, backgroundTimer, backgroundTransitionTime, currentBackgroundIndex)
     if menuState == "credits" or menuState == "howtoplay" then
+        -- Add semi-transparent black background
+        love.graphics.setColor(0, 0, 0, 0.7)  -- Black with 70% opacity
+        love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+        
         love.graphics.setFont(menuFont)
         local startY = 100
         local spacing = 30
