@@ -21,6 +21,10 @@ end
 function draw.drawBins(binImages, binOrder, lineY)
     local centerX = love.graphics.getWidth() / 2
     local binY = lineY + 70
+    local labelY = binY + 1  -- Position for labels above bins
+    local font = love.graphics.getFont()
+    local textScale = 1.4  -- Adjust this value to change text size
+
 
     for i, binType in ipairs(binOrder) do
         -- Adjust position based on the order of bins
@@ -28,8 +32,32 @@ function draw.drawBins(binImages, binOrder, lineY)
         local xPosition = centerX + xOffset
         local binImage = binImages[binType]
        
-        -- Draw the bin with the adjusted position
+        -- Draw the bin
+        love.graphics.setColor(1, 1, 1)
         love.graphics.draw(binImage, xPosition, binY, 0, 1, 1, binImage:getWidth() / 2, binImage:getHeight() / 2)
+
+         -- Draw label with scale
+         local label = string.upper(binType)
+         local labelWidth = font:getWidth(label) * textScale
+         
+         -- Save current graphics state
+         love.graphics.push()
+         love.graphics.translate(xPosition - labelWidth/2, labelY)
+         love.graphics.scale(textScale, textScale)
+ 
+         -- Draw text outline
+         love.graphics.setColor(0, 0, 0)
+         love.graphics.print(label, -1, -1)
+         love.graphics.print(label, 1, -1)
+         love.graphics.print(label, -1, 1)
+         love.graphics.print(label, 1, 1)
+         
+         -- Draw main text
+         love.graphics.setColor(1, 1, 1)
+         love.graphics.print(label, 0, 0)
+ 
+         -- Restore graphics state
+         love.graphics.pop()
     end
 end
 
