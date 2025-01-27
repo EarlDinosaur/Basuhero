@@ -151,6 +151,13 @@ function menu.handleMenuInput(key, menuState, selectedOption, volume, levelMusic
                 selectedOption = 1
             end
         end
+    elseif key == "escape" then
+        if menuState == "main" then
+            love.event.quit()
+        else
+            menuState = "main"
+            selectedOption = 1
+        end
     end
     
     return menuState, selectedOption, gameState, volume
