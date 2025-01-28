@@ -1,5 +1,29 @@
 local menu = {}
 
+-- Add variables for easter egg
+local typedChars = ""
+local easterEggTimer = 0
+local showEasterEgg = false
+local isSpawning = false  -- New variable to control spawning independently
+
+-- Add easter egg particles system
+local easterEggs = {}
+local spawnTimer = 0
+local spawnRate = 0.1  -- Spawn new egg every 0.1 seconds
+
+-- Easter egg particle constructor
+local function createEasterEgg()
+    return {
+        x = love.math.random(0, love.graphics.getWidth()),
+        y = -50,  -- Start above screen
+        rotation = love.math.random() * math.pi * 2,
+        rotationSpeed = love.math.random(-3, 3),
+        scale = love.math.random(0.5, 1.5),
+        speedY = love.math.random(200, 400),
+        speedX = love.math.random(-50, 50)
+    }
+end
+
 local creditsContent = {
     {text = "BASUHERO", type = "title"},
     {text = "", type = "spacer"},
@@ -89,6 +113,25 @@ function menu.draw(backgroundImages, backgroundTimer, backgroundTransitionTime, 
         -- Draw back button text with glow effect
         love.graphics.setColor(1, 1, 0)
         love.graphics.printf("Back", 0, backY, love.graphics.getWidth(), "center")
+
+        -- Draw easter eggs if activated
+        if showEasterEgg then
+            love.graphics.setColor(1, 1, 1, 1)
+            local easterEggImage = love.graphics.newImage("assets/images/poop.png")
+            
+            for _, egg in ipairs(easterEggs) do
+                love.graphics.draw(
+                    easterEggImage,
+                    egg.x,
+                    egg.y,
+                    egg.rotation,
+                    egg.scale,
+                    egg.scale,
+                    easterEggImage:getWidth()/2,
+                    easterEggImage:getHeight()/2
+                )
+            end
+        end
 
     elseif menuState == "howtoplay" then
         -- Add semi-transparent black background
@@ -198,6 +241,40 @@ function menu.drawGradient(backgroundImages, backgroundTimer, backgroundTransiti
     love.graphics.draw(nextBackground, 0, 0, 0, screenWidth / nextBackground:getWidth(), screenHeight / nextBackground:getHeight())
 end
 
+function menu.update(dt)
+    -- Update easter egg system
+    if showEasterEgg then
+        easterEggTimer = easterEggTimer + dt
+        if easterEggTimer >= 3 then
+            easterEggTimer = 0
+            typedChars = ""
+            isSpawning = false  -- Stop spawning new eggs but don't clear existing ones
+        end
+
+        -- Spawn new eggs only while isSpawning is true
+        if isSpawning then
+            spawnTimer = spawnTimer + dt
+            if spawnTimer >= spawnRate then
+                spawnTimer = 0
+                table.insert(easterEggs, createEasterEgg())
+            end
+        end
+
+        -- Update existing eggs
+        for i = #easterEggs, 1, -1 do
+            local egg = easterEggs[i]
+            egg.y = egg.y + egg.speedY * dt
+            egg.x = egg.x + egg.speedX * dt
+            egg.rotation = egg.rotation + egg.rotationSpeed * dt
+
+            -- Remove eggs that are off screen
+            if egg.y > love.graphics.getHeight() + 50 then
+                table.remove(easterEggs, i)
+            end
+        end
+    end
+end
+
 function menu.handleMenuSelection(menuState, selectedOption)
     if menuState == "main" then
         if selectedOption == 1 then  -- Play Game
@@ -279,6 +356,30 @@ function menu.handleMenuInput(key, menuState, selectedOption, volume, levelMusic
             menuState = "main"
             selectedOption = 1
         end
+    end
+
+    -- Handle typed characters for easter egg in credits menu
+    if menuState == "credits" then
+        if key and #key == 1 then  -- Only single character keys
+            typedChars = typedChars .. key
+            -- Check last 4 characters for "poop"
+            if #typedChars >= 4 then
+                local lastFour = typedChars:sub(-4)
+                if lastFour == "poop" then
+                    showEasterEgg = true
+                    isSpawning = true  -- Start spawning new eggs
+                    easterEggTimer = 0
+                    spawnTimer = 0
+                    -- Don't clear existing eggs when retriggered
+                end
+                -- Keep string from growing too long
+                if #typedChars > 10 then
+                    typedChars = typedChars:sub(-10)
+                end
+            end
+        end
+    else
+        typedChars = ""  -- Reset when leaving credits
     end
     
     return menuState, selectedOption, gameState, volume

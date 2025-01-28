@@ -148,6 +148,11 @@ function love.update(dt)
         backgroundTimer = 0
         currentBackgroundIndex = currentBackgroundIndex % #backgroundImages + 1
     end
+    
+    if gameState == "menu" then
+        menu.update(dt)
+    end
+
     if gameState == "playing" then
         timer = timer + dt
 
