@@ -302,7 +302,7 @@ end
 function menu.handleMenuInput(key, menuState, selectedOption, volume, levelMusic, menuOptions)
     if menuState == "options" then
         if key == "left" or key == "right" or key == "a" or key == "d" then
-            local change = key == "left" or key == "a" and -0.1 or 0.1
+            local change = (key == "right" or key == "d") and 0.1 or -0.1
             if selectedOption == 1 then
                 volume.music = math.max(0, math.min(1, volume.music + change))
                 menuOptions.options[1] = string.format("Music Volume: %d%%", math.floor(volume.music * 100))
