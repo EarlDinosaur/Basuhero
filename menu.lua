@@ -236,6 +236,7 @@ function menu.handleMenuInput(key, menuState, selectedOption, volume, levelMusic
             elseif selectedOption == 2 then
                 volume.effects = math.max(0, math.min(1, volume.effects + change))
                 menuOptions.options[2] = string.format("Sound Effects: %d%%", math.floor(volume.effects * 100))
+                clickSound:setVolume(volume.effects)  -- Adjust click sound volume based on options
             end
         end
     end
