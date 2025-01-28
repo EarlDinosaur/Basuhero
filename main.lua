@@ -43,6 +43,8 @@ local gameover = require('gameover')
 local utils = require("utils")
 
 function love.load()
+    love.window.setTitle("BASUHERO - Trash Sorting Game")
+    
     love.graphics.setBackgroundColor(.64, .6, 1.4)  -- Light blue background
 
     levelMusic = {

@@ -36,6 +36,11 @@ function menu.draw(backgroundImages, backgroundTimer, backgroundTransitionTime, 
     menu.drawGradient(backgroundImages, backgroundTimer, backgroundTransitionTime, currentBackgroundIndex)
 
     if menuState == "credits" then
+
+        -- Add semi-transparent black background
+        love.graphics.setColor(0, 0, 0, 0.7)  -- Black with 70% opacity
+        love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+
         love.graphics.setFont(menuFont)
         local startY = 100
         local spacing = 30
@@ -68,6 +73,11 @@ function menu.draw(backgroundImages, backgroundTimer, backgroundTransitionTime, 
         love.graphics.printf("Back", 0, backY, love.graphics.getWidth(), "center")
         
     else
+        if menuState == "options" then
+            -- Add semi-transparent black background
+            love.graphics.setColor(0, 0, 0, 0.7)  -- Black with 70% opacity
+            love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+        end
         -- Draw logo image
         love.graphics.setColor(1, 1, 1)
         local screenWidth, screenHeight = love.graphics.getDimensions()
@@ -187,6 +197,13 @@ function menu.handleMenuInput(key, menuState, selectedOption, volume, levelMusic
                 menuState = "main"
                 selectedOption = 1
             end
+        end
+    elseif key == "escape" then
+        if menuState == "main" then
+            love.event.quit()
+        else
+            menuState = "main"
+            selectedOption = 1
         end
     end
     

@@ -1,24 +1,50 @@
 local gameover = {}
 
 function gameover.draw(params)
+    -- Draw semi-transparent black overlay
+    love.graphics.setColor(0, 0, 0, 0.7)
+    love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+
+    -- Draw "Game Over" text bigger and with more dramatic outline
+    love.graphics.setFont(params.fonts.cute)
+    local gameOverText = "Game Over"
+    local centerY = love.graphics.getHeight() / 4
+    
+    -- Thicker outline for game over text
+    love.graphics.setColor(0, 0, 0)
+    for i = 1, 3 do
+        love.graphics.printf(gameOverText, -i, centerY, love.graphics.getWidth(), "center")
+        love.graphics.printf(gameOverText, i, centerY, love.graphics.getWidth(), "center")
+        love.graphics.printf(gameOverText, 0, centerY - i, love.graphics.getWidth(), "center")
+        love.graphics.printf(gameOverText, 0, centerY + i, love.graphics.getWidth(), "center")
+    end
+    
+    -- Main game over text
+    love.graphics.setColor(1, 0.3, 0.3)  -- Reddish color for game over
+    love.graphics.printf(gameOverText, 0, centerY, love.graphics.getWidth(), "center")
+
+    -- Draw score info with larger font and better spacing
+    local scoreY = centerY + 80
     love.graphics.setFont(params.fonts.cute)
     love.graphics.setColor(1, 1, 1)
+    love.graphics.printf("Final Score: " .. params.score, 0, scoreY, love.graphics.getWidth(), "center")
     
-    -- Draw "Game Over" with outline
-    local gameOverText = "Game Over"
-    love.graphics.setColor(0, 0, 0)
-    love.graphics.printf(gameOverText, -2, love.graphics.getHeight() / 4, love.graphics.getWidth(), "center")
-    love.graphics.printf(gameOverText, 2, love.graphics.getHeight() / 4, love.graphics.getWidth(), "center")
-    love.graphics.printf(gameOverText, 0, love.graphics.getHeight() / 4 - 2, love.graphics.getWidth(), "center")
-    love.graphics.printf(gameOverText, 0, love.graphics.getHeight() / 4 + 2, love.graphics.getWidth(), "center")
-    love.graphics.setColor(1, 1, 1)
-    love.graphics.printf(gameOverText, 0, love.graphics.getHeight() / 4, love.graphics.getWidth(), "center")
+    -- Show high score with golden color if it's a new record
+    local isNewHighScore = params.score > (params.highScores[params.currentLevel] or 0)
+    if isNewHighScore then
+        love.graphics.setColor(1, 0.843, 0)  -- Golden color
+        love.graphics.printf("New High Score!", 0, scoreY + 40, love.graphics.getWidth(), "center")
+    else
+        love.graphics.setColor(0.7, 0.7, 0.7)  -- Grey color
+        love.graphics.printf("High Score: " .. (params.highScores[params.currentLevel] or 0), 0, scoreY + 40, love.graphics.getWidth(), "center")
+    end
 
-    local startY = love.graphics.getHeight() / 2
+    -- Draw options with better spacing and visual hierarchy
+    local startY = love.graphics.getHeight() / 2 + 100
     local spacing = 50
 
     for i, option in ipairs(params.options) do
-        -- Draw outline
+        -- Draw option outline
         love.graphics.setColor(0, 0, 0)
         love.graphics.printf(option, -2, startY + (i-1) * spacing, love.graphics.getWidth(), "center")
         love.graphics.printf(option, 2, startY + (i-1) * spacing, love.graphics.getWidth(), "center")
@@ -27,16 +53,12 @@ function gameover.draw(params)
         
         -- Draw text with highlight
         if i == params.selectedOption then
-            love.graphics.setColor(1, 1, 0)  -- Highlight selected option
+            love.graphics.setColor(1, 1, 0)  -- Yellow highlight for selected
         else
-            love.graphics.setColor(1, 1, 1)
+            love.graphics.setColor(0.8, 0.8, 0.8)  -- Slightly dimmer for non-selected
         end
         love.graphics.printf(option, 0, startY + (i-1) * spacing, love.graphics.getWidth(), "center")
     end
-
-    love.graphics.setFont(params.fonts.regular)
-    love.graphics.print("Score: " .. params.score, love.graphics.getWidth() - 150, 20)
-    love.graphics.print("High Score: " .. (params.highScores[params.currentLevel] or 0), love.graphics.getWidth() - 150, 40)
 end
 
 function gameover.handleInput(params)
