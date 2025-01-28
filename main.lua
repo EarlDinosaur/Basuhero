@@ -69,11 +69,10 @@ function love.load()
         love.graphics.newImage("assets/images/fishbone.png")
     }
     nonrecImages = {
-        love.graphics.newImage("assets/images/poop.png"),
-        love.graphics.newImage("assets/images/poop.png"),
-        love.graphics.newImage("assets/images/poop.png")
+        love.graphics.newImage("assets/images/glass.png"),
+        love.graphics.newImage("assets/images/tissue.png"),
+        love.graphics.newImage("assets/images/pizzabox.png")
     }
-    
 
     recyclableImages = {
         love.graphics.newImage("assets/images/bottle.png"),
