@@ -14,22 +14,21 @@ local creditsContent = {
     {text = "Ruzel Luigi Alano", type = "name"},
 }
 
+-- Update howtoplayContent with types for better styling
 local howtoplayContent = {
-    "How to Play",
-    "",
-    "Goal: Sort the falling trash into correct bins",
-    "",
-    "Controls:",
-    "Q - Compostable",
-    "W - Waste",
-    "E - Recyclable",
-    "ESC - Return to Menu",
-    "",
-    "Tips:",
-    "- Watch the trash type carefully",
-    "- Sort before trash crosses the line",
-    "- Higher levels have faster speeds",
-    "",
+    {text = "How to Play", type = "title"},
+    {text = "", type = "spacer"},
+    {text = "Goal", type = "header"},
+    {text = "Sort the falling trash into correct bins", type = "text"},
+    -- {text = "", type = "spacer"},
+    {text = "Controls", type = "header"},
+    {text = "Q - Compostable", type = "text"},
+    {text = "W - Waste", type = "text"},
+    {text = "E - Recyclable", type = "text"},
+    -- {text = "", type = "spacer"},
+    {text = "Tips", type = "header"},
+    {text = "- Sort before trash crosses the line", type = "text"},
+    {text = "- Higher levels have faster speeds", type = "text"},
 }
 
 function menu.draw(backgroundImages, backgroundTimer, backgroundTransitionTime, currentBackgroundIndex, menuOptions, menuState, selectedOption, logoImage, cuteFont, menuFont)
@@ -93,24 +92,60 @@ function menu.draw(backgroundImages, backgroundTimer, backgroundTransitionTime, 
 
     elseif menuState == "howtoplay" then
         -- Add semi-transparent black background
-        love.graphics.setColor(0, 0, 0, 0.7)  -- Black with 70% opacity
+        love.graphics.setColor(0, 0, 0, 0.8)
         love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+
+        local startY = 80
+        local spacing = 35
         
-        love.graphics.setFont(menuFont)
-        local startY = 100
-        local spacing = 20
-        
-        for i, line in ipairs(howtoplayContent) do
-            love.graphics.setColor(1, 1, 1)
-            love.graphics.printf(line, 0, startY + (i-1) * spacing, love.graphics.getWidth(), "center")
+        -- Draw decorative top line
+        love.graphics.setColor(1, 0.843, 0, 0.5)
+        love.graphics.setLineWidth(2)
+        love.graphics.line(
+            love.graphics.getWidth() * 0.3, startY - 20,
+            love.graphics.getWidth() * 0.7, startY - 20
+        )
+
+        -- Draw content with different styles for each type
+        for i, content in ipairs(howtoplayContent) do
+            if content.type == "title" then
+                love.graphics.setFont(titleFont)
+                love.graphics.setColor(1, 0.843, 0)  -- Golden color for title
+            elseif content.type == "header" then
+                love.graphics.setFont(menuFont)
+                love.graphics.setColor(0.7, 0.7, 1.0)  -- Light blue for headers
+                startY = startY + 10  -- Add extra spacing before headers
+            elseif content.type == "text" then
+                love.graphics.setFont(menuFont)
+                love.graphics.setColor(1, 1, 1)
+            end
+            
+            if content.type ~= "spacer" then
+                love.graphics.printf(content.text, 0, startY + (i-1) * spacing, love.graphics.getWidth(), "center")
+            end
         end
 
+        -- Draw decorative bottom line
+        love.graphics.setColor(1, 0.843, 0, 0.5)
+        love.graphics.line(
+            love.graphics.getWidth() * 0.3, love.graphics.getHeight() - 100,
+            love.graphics.getWidth() * 0.7, love.graphics.getHeight() - 100
+        )
 
-        -- Draw back option separately
-        local backY = startY + (#howtoplayContent + 1) * spacing
-        love.graphics.setColor(1, 1, 0)  -- Always highlight back option
-        love.graphics.printf("Back", 0, backY, love.graphics.getWidth(), "center")
+        -- Draw back button with special styling
+        local backY = love.graphics.getHeight() - 80
+        love.graphics.setFont(menuFont)
         
+        -- Back button outline
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.printf("Back", -2, backY, love.graphics.getWidth(), "center")
+        love.graphics.printf("Back", 2, backY, love.graphics.getWidth(), "center")
+        love.graphics.printf("Back", 0, backY - 2, love.graphics.getWidth(), "center")
+        love.graphics.printf("Back", 0, backY + 2, love.graphics.getWidth(), "center")
+        
+        -- Back button text with glow
+        love.graphics.setColor(1, 1, 0)
+        love.graphics.printf("Back", 0, backY, love.graphics.getWidth(), "center")
     else
         if menuState == "options" then
             -- Add semi-transparent black background
