@@ -4,7 +4,7 @@ A trash sorting game built with LÖVE (Love2D) where players must sort falling t
 
 ## Description
 
-BASUHERO is an educational rhythm-based game that teaches players about proper waste segregation. Players must quickly identify and sort falling trash items into their appropriate bins (Compostable, Waste, or Recyclable) before they cross the line. The trash items fall in sync with the background music, creating an engaging rhythm-based gameplay experience.
+BASUHERO is an educational rhythm-based game that teaches players about proper waste segregation. Players must quickly identify and sort falling trash items into their appropriate bins (Compostable, Recyclable, or Non-recyclable) before they cross the line. The trash items fall in sync with the background music, creating an engaging rhythm-based gameplay experience.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ BASUHERO is an educational rhythm-based game that teaches players about proper w
 
 - Press corresponding keys to sort trash:
   - `Q` - Sort as Compostable
-  - `W` - Sort as Waste
+  - `W` - Sort as Non-recyclable
   - `E` - Sort as Recyclable
 - Sort trash before it crosses the red line
 - Press `ESC` to return to the main menu
@@ -47,7 +47,7 @@ BASUHERO is an educational rhythm-based game that teaches players about proper w
 
 ### Menu Navigation
 
-- Arrow keys to navigate
+- Arrow or WASD keys to navigate
 - Enter/Space to select
 - ESC to return to previous menu
 

@@ -139,7 +139,13 @@ function love.load()
     -- Use a built-in Love2D font or another available font if CuteFont.ttf is not available
     cuteFont = love.graphics.newFont(32)  -- Use a default font with size 32
 
-    clickSound = love.audio.newSource("assets/audio/click.wav", "static")  -- Load click sound
+    trashSounds = {
+        sound1 = love.audio.newSource("assets/audio/trash1.wav", "static"),
+        sound2 = love.audio.newSource("assets/audio/trash2.wav", "static"),
+        sound3 = love.audio.newSource("assets/audio/trash3.wav", "static")
+    }
+
+    fartSound = love.audio.newSource("assets/audio/fart.mp3", "static")  -- Load fart sound
 end
 
 function love.update(dt)
@@ -256,7 +262,6 @@ end
 function love.keypressed(key)
     if gameState == "menu" then
         menuState, selectedOption, newGameState, volume = menu.handleMenuInput(key, menuState, selectedOption, volume, levelMusic, menuOptions)
-        clickSound:setVolume(volume.effects)  -- Adjust click sound volume based on options
     elseif gameState == "levelSelect" then
         local result = levelSelect.handleInput({
             key = key,
@@ -297,7 +302,8 @@ function love.keypressed(key)
             gradientTransitionProgress = gradientTransitionProgress,
             shakeTime = shakeTime,
             shakeDuration = shakeDuration,
-            volume = volume  -- Include volume parameter
+            volume = volume,  -- Include volume parameter
+            trashSounds = trashSounds  -- Add this line
         })
     
         -- Update all returned states
