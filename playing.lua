@@ -49,7 +49,7 @@ function playing.drawPlaying(params)
     -- Draw UI text
     love.graphics.setColor(1, 1, 1)
     love.graphics.print("Press q if it is compostable", 50, 20)
-    love.graphics.print("Press w if it is waste", 50, 35)
+    love.graphics.print("Press w if it is non-recyclable", 50, 35)
     love.graphics.print("Press e if it is recyclable", 50, 50)
     love.graphics.print("Press esc to go to the main menu", 50, 65)
     love.graphics.print("Score: " .. params.score, love.graphics.getWidth() - 150, 20)
@@ -86,11 +86,11 @@ function playing.handleInput(params)
 
     -- Handle bin swapping
     if key == "q" then
-        binOrder = {"waste", "compostable", "recyclable"}
+        binOrder = {"nonrec", "compostable", "recyclable"}
     elseif key == "w" then
-        binOrder = {"recyclable", "waste", "compostable"}
+        binOrder = {"recyclable", "nonrec", "compostable"}
     elseif key == "e" then
-        binOrder = {"compostable", "recyclable", "waste"}
+        binOrder = {"compostable", "recyclable", "nonrec"}
     end
 
     -- Handle trash clearing if a valid key was pressed
@@ -130,7 +130,7 @@ function playing.checkTrashClear(params)
     for i, trash in ipairs(trashItems) do
         if trash.touchingLine then
             if (key == "q" and trash.type == "compostable") or
-               (key == "w" and trash.type == "waste") or
+               (key == "w" and trash.type == "nonrec") or
                (key == "e" and trash.type == "recyclable") then
                 table.remove(trashItems, i)
                 -- Apply score multiplier based on difficulty

@@ -23,7 +23,7 @@ local howtoplayContent = {
     -- {text = "", type = "spacer"},
     {text = "Controls", type = "header"},
     {text = "Q - Compostable", type = "text"},
-    {text = "W - Waste", type = "text"},
+    {text = "W - Non-recyclable", type = "text"},
     {text = "E - Recyclable", type = "text"},
     -- {text = "", type = "spacer"},
     {text = "Tips", type = "header"},
