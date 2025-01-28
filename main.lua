@@ -199,10 +199,15 @@ function love.draw()
         levelSelect.draw({
             fonts = {
                 title = titleFont,
-                cute = cuteFont
+                cute = cuteFont,
+                menu = menuFont
             },
             options = levelSelectOptions,
-            selectedOption = selectedLevelOption
+            selectedOption = selectedLevelOption,
+            backgrounds = backgroundImages,
+            currentBackgroundIndex = currentBackgroundIndex,
+            backgroundTimer = backgroundTimer,
+            backgroundTransitionTime = backgroundTransitionTime
         })
     elseif gameState == "playing" then
         playing.drawPlaying({
@@ -274,6 +279,7 @@ function love.keypressed(key)
             trashItems = trashItems,
             score = score,
             lives = lives,
+            currentLevel = currentLevel,
             currentGradientIndex = currentGradientIndex,
             nextGradientIndex = nextGradientIndex,
             gradientColors = gradientColors,

@@ -1,5 +1,12 @@
 local playing = {}
 
+-- Add score multipliers for each difficulty
+local scoreMultipliers = {
+    easy = 1,
+    medium = 1.5,
+    hard = 2
+}
+
 function playing.drawPlaying(params)
     -- Font setup
     love.graphics.setFont(params.font)
@@ -110,8 +117,9 @@ end
 function playing.checkTrashClear(params)
     local key = params.key
     local trashItems = params.trashItems
-    local score = params.score
+    local score = params.score or 0
     local lives = params.lives
+    local currentLevel = params.currentLevel
     local currentGradientIndex = params.currentGradientIndex
     local nextGradientIndex = params.nextGradientIndex
     local gradientColors = params.gradientColors
@@ -125,7 +133,9 @@ function playing.checkTrashClear(params)
                (key == "w" and trash.type == "waste") or
                (key == "e" and trash.type == "recyclable") then
                 table.remove(trashItems, i)
-                score = score + 100
+                -- Apply score multiplier based on difficulty
+                local multiplier = scoreMultipliers[currentLevel] or 1
+                score = score + (100 * multiplier)
                 
                 currentGradientIndex = nextGradientIndex
                 nextGradientIndex = math.random(#gradientColors)
@@ -144,6 +154,5 @@ function playing.checkTrashClear(params)
     end
     return score, currentGradientIndex, nextGradientIndex, gradientTransitionProgress, shakeTime, false, lives
 end
-
 
 return playing
