@@ -7,6 +7,14 @@ local scoreMultipliers = {
     hard = 2
 }
 
+-- Function to play a random trash sound
+local function playRandomTrashSound(trashSounds, volume)
+    local sounds = {trashSounds.sound1, trashSounds.sound2, trashSounds.sound3}
+    local randomSound = sounds[love.math.random(#sounds)]
+    randomSound:setVolume(volume.effects * 0.5)
+    randomSound:play()
+end
+
 function playing.drawPlaying(params)
     -- Font setup
     love.graphics.setFont(params.font)
@@ -138,9 +146,8 @@ function playing.checkTrashClear(params)
                 local multiplier = scoreMultipliers[currentLevel] or 1
                 score = score + (100 * multiplier)
                 
-                -- Play click sound at reduced volume
-                clickSound:setVolume(volume.effects * 0.5)
-                clickSound:play()
+                -- Play random trash sound
+                playRandomTrashSound(params.trashSounds, params.volume)
                 
                 currentGradientIndex = nextGradientIndex
                 nextGradientIndex = math.random(#gradientColors)

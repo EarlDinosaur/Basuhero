@@ -301,8 +301,8 @@ end
 
 function menu.handleMenuInput(key, menuState, selectedOption, volume, levelMusic, menuOptions)
     if menuState == "options" then
-        if key == "left" or key == "right" then
-            local change = key == "left" and -0.1 or 0.1
+        if key == "left" or key == "right" or key == "a" or key == "d" then
+            local change = key == "left" or key == "a" and -0.1 or 0.1
             if selectedOption == 1 then
                 volume.music = math.max(0, math.min(1, volume.music + change))
                 menuOptions.options[1] = string.format("Music Volume: %d%%", math.floor(volume.music * 100))
@@ -313,7 +313,6 @@ function menu.handleMenuInput(key, menuState, selectedOption, volume, levelMusic
             elseif selectedOption == 2 then
                 volume.effects = math.max(0, math.min(1, volume.effects + change))
                 menuOptions.options[2] = string.format("Sound Effects: %d%%", math.floor(volume.effects * 100))
-                clickSound:setVolume(volume.effects)  -- Adjust click sound volume based on options
             end
         end
     end
@@ -371,6 +370,7 @@ function menu.handleMenuInput(key, menuState, selectedOption, volume, levelMusic
                     isSpawning = true  -- Start spawning new eggs
                     easterEggTimer = 0
                     spawnTimer = 0
+                    fartSound:play()
                     -- Don't clear existing eggs when retriggered
                 end
                 -- Keep string from growing too long
