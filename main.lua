@@ -14,35 +14,9 @@ local menuOptions = {
     main = {"Play Game", "How to Play", "Options", "Credits", "Exit"},
     options = {"Music Volume: 100%", "Sound Effects: 100%", "Back"},
     credits = {
-        "BASUHERO",
-        "",
-        "Group Members:",
-        "Charles Andrei Abuela",
-        "Earl Gem Llesis",
-        "Giancarlo Bajit",
-        "Jhonder Sta Ines",
-        "Meinard Francisco",
-        "Rodney Milay Maisog",
-        "Ruzel Luigi Alano",
-        "",
         "Back"
     },
     howtoplay = {
-        "How to Play",
-        "",
-        "Goal: Sort the falling trash into correct bins",
-        "",
-        "Controls:",
-        "Q - Compostable",
-        "W - Waste",
-        "E - Recyclable",
-        "ESC - Return to Menu",
-        "",
-        "Tips:",
-        "- Watch the trash type carefully",
-        "- Sort before trash crosses the line",
-        "- Higher levels have faster speeds",
-        "",
         "Back"
     }
 }

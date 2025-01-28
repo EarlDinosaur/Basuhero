@@ -1,25 +1,71 @@
 local menu = {}
 
+local creditsContent = {
+    "BASUHERO",
+    "",
+    "Group Members:",
+    "Charles Andrei Abuela",
+    "Earl Gem Llesis",
+    "Giancarlo Bajit",
+    "Jhonder Sta Ines",
+    "Meinard Francisco", 
+    "Rodney Milay Maisog",
+    "Ruzel Luigi Alano"
+}
+
+local howtoplayContent = {
+    "How to Play",
+    "",
+    "Goal: Sort the falling trash into correct bins",
+    "",
+    "Controls:",
+    "Q - Compostable",
+    "W - Waste",
+    "E - Recyclable",
+    "ESC - Return to Menu",
+    "",
+    "Tips:",
+    "- Watch the trash type carefully",
+    "- Sort before trash crosses the line",
+    "- Higher levels have faster speeds",
+    "",
+}
+
 function menu.draw(backgroundImages, backgroundTimer, backgroundTransitionTime, currentBackgroundIndex, menuOptions, menuState, selectedOption, logoImage, cuteFont, menuFont)
     -- Draw animated background
     menu.drawGradient(backgroundImages, backgroundTimer, backgroundTransitionTime, currentBackgroundIndex)
-    if menuState == "credits" or menuState == "howtoplay" then
+
+    if menuState == "credits" then
         love.graphics.setFont(menuFont)
         local startY = 100
         local spacing = 30
         
-        for i, option in ipairs(menuOptions[menuState]) do
-            if i == #menuOptions[menuState] then  -- "Back" option
-                if i == selectedOption then
-                    love.graphics.setColor(1, 1, 0)
-                else
-                    love.graphics.setColor(1, 1, 1)
-                end
-            else
-                love.graphics.setColor(1, 1, 1)
-            end
-            love.graphics.printf(option, 0, startY + (i-1) * spacing, love.graphics.getWidth(), "center")
+        -- Draw credits content
+        for i, line in ipairs(creditsContent) do
+            love.graphics.setColor(1, 1, 1)
+            love.graphics.printf(line, 0, startY + (i-1) * spacing, love.graphics.getWidth(), "center")
         end
+    
+        -- Draw back option separately
+        local backY = startY + (#creditsContent + 1) * spacing
+        love.graphics.setColor(1, 1, 0)  -- Always highlight back option
+        love.graphics.printf("Back", 0, backY, love.graphics.getWidth(), "center")
+
+    elseif menuState == "howtoplay" then
+        love.graphics.setFont(menuFont)
+        local startY = 100
+        local spacing = 20
+        
+        for i, line in ipairs(howtoplayContent) do
+            love.graphics.setColor(1, 1, 1)
+            love.graphics.printf(line, 0, startY + (i-1) * spacing, love.graphics.getWidth(), "center")
+        end
+
+
+        -- Draw back option separately
+        local backY = startY + (#howtoplayContent + 1) * spacing
+        love.graphics.setColor(1, 1, 0)  -- Always highlight back option
+        love.graphics.printf("Back", 0, backY, love.graphics.getWidth(), "center")
         
     else
         -- Draw logo image
