@@ -126,6 +126,7 @@ function playing.checkTrashClear(params)
     local gradientTransitionProgress = params.gradientTransitionProgress
     local shakeTime = params.shakeTime
     local shakeDuration = params.shakeDuration
+    local volume = params.volume  -- Include volume parameter
 
     for i, trash in ipairs(trashItems) do
         if trash.touchingLine then
@@ -138,7 +139,7 @@ function playing.checkTrashClear(params)
                 score = score + (100 * multiplier)
                 
                 -- Play click sound at reduced volume
-                clickSound:setVolume(0.5)
+                clickSound:setVolume(volume.effects * 0.5)
                 clickSound:play()
                 
                 currentGradientIndex = nextGradientIndex
