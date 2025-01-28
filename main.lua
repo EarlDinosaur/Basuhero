@@ -69,11 +69,10 @@ function love.load()
         love.graphics.newImage("assets/images/fishbone.png")
     }
     nonrecImages = {
-        love.graphics.newImage("assets/images/poop.png"),
-        love.graphics.newImage("assets/images/poop.png"),
-        love.graphics.newImage("assets/images/poop.png")
+        love.graphics.newImage("assets/images/glass.png"),
+        love.graphics.newImage("assets/images/tissue.png"),
+        love.graphics.newImage("assets/images/pizzabox.png")
     }
-    
 
     recyclableImages = {
         love.graphics.newImage("assets/images/bottle.png"),
@@ -257,6 +256,7 @@ end
 function love.keypressed(key)
     if gameState == "menu" then
         menuState, selectedOption, newGameState, volume = menu.handleMenuInput(key, menuState, selectedOption, volume, levelMusic, menuOptions)
+        clickSound:setVolume(volume.effects)  -- Adjust click sound volume based on options
     elseif gameState == "levelSelect" then
         local result = levelSelect.handleInput({
             key = key,
@@ -296,7 +296,8 @@ function love.keypressed(key)
             gradientColors = gradientColors,
             gradientTransitionProgress = gradientTransitionProgress,
             shakeTime = shakeTime,
-            shakeDuration = shakeDuration
+            shakeDuration = shakeDuration,
+            volume = volume  -- Include volume parameter
         })
     
         -- Update all returned states
