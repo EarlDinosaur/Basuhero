@@ -137,6 +137,10 @@ function playing.checkTrashClear(params)
                 local multiplier = scoreMultipliers[currentLevel] or 1
                 score = score + (100 * multiplier)
                 
+                -- Play click sound at reduced volume
+                clickSound:setVolume(0.5)
+                clickSound:play()
+                
                 currentGradientIndex = nextGradientIndex
                 nextGradientIndex = math.random(#gradientColors)
                 gradientTransitionProgress = 0
