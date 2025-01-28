@@ -77,8 +77,8 @@ function love.load()
 
     recyclableImages = {
         love.graphics.newImage("assets/images/bottle.png"),
-        love.graphics.newImage("assets/images/can.png"),
-        love.graphics.newImage("assets/images/box.png")
+        love.graphics.newImage("assets/images/box.png"),
+        love.graphics.newImage("assets/images/can.png")
     }
 
     -- Set fixed values for trash size, x position
@@ -139,6 +139,8 @@ function love.load()
     logoImage = love.graphics.newImage("assets/images/Basuhero_Logo.png")
     -- Use a built-in Love2D font or another available font if CuteFont.ttf is not available
     cuteFont = love.graphics.newFont(32)  -- Use a default font with size 32
+
+    clickSound = love.audio.newSource("assets/audio/click.wav", "static")  -- Load click sound
 end
 
 function love.update(dt)
