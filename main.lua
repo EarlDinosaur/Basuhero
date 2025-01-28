@@ -64,21 +64,21 @@ function love.load()
     timer = 0  -- Timer to control the interval
 
     compostableImages = {
-        love.graphics.newImage("assets/images/4.png"),
-        love.graphics.newImage("assets/images/5.png"),
-        love.graphics.newImage("assets/images/6.png")
+        love.graphics.newImage("assets/images/apple.png"),
+        love.graphics.newImage("assets/images/banana.png"),
+        love.graphics.newImage("assets/images/fishbone.png")
     }
     nonrecImages = {
-        love.graphics.newImage("assets/images/13.png"),
-        love.graphics.newImage("assets/images/14.png"),
-        love.graphics.newImage("assets/images/15.png")
+        love.graphics.newImage("assets/images/poop.png"),
+        love.graphics.newImage("assets/images/poop.png"),
+        love.graphics.newImage("assets/images/poop.png")
     }
     
 
     recyclableImages = {
-        love.graphics.newImage("assets/images/1.png"),
-        love.graphics.newImage("assets/images/2.png"),
-        love.graphics.newImage("assets/images/3.png")
+        love.graphics.newImage("assets/images/bottle.png"),
+        love.graphics.newImage("assets/images/box.png"),
+        love.graphics.newImage("assets/images/can.png")
     }
 
     -- Set fixed values for trash size, x position
