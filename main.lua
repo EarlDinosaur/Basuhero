@@ -64,21 +64,21 @@ function love.load()
     timer = 0  -- Timer to control the interval
 
     compostableImages = {
-        love.graphics.newImage("assets/images/apple.png"),
-        love.graphics.newImage("assets/images/banana.png"),
-        love.graphics.newImage("assets/images/fishbone.png")
+        love.graphics.newImage("assets/images/4.png"),
+        love.graphics.newImage("assets/images/5.png"),
+        love.graphics.newImage("assets/images/6.png")
     }
     nonrecImages = {
-        love.graphics.newImage("assets/images/poop.png"),
-        love.graphics.newImage("assets/images/poop.png"),
-        love.graphics.newImage("assets/images/poop.png")
+        love.graphics.newImage("assets/images/13.png"),
+        love.graphics.newImage("assets/images/14.png"),
+        love.graphics.newImage("assets/images/15.png")
     }
     
 
     recyclableImages = {
-        love.graphics.newImage("assets/images/bottle.png"),
-        love.graphics.newImage("assets/images/can.png"),
-        love.graphics.newImage("assets/images/box.png")
+        love.graphics.newImage("assets/images/1.png"),
+        love.graphics.newImage("assets/images/2.png"),
+        love.graphics.newImage("assets/images/3.png")
     }
 
     -- Set fixed values for trash size, x position
@@ -139,6 +139,8 @@ function love.load()
     logoImage = love.graphics.newImage("assets/images/Basuhero_Logo.png")
     -- Use a built-in Love2D font or another available font if CuteFont.ttf is not available
     cuteFont = love.graphics.newFont(32)  -- Use a default font with size 32
+
+    clickSound = love.audio.newSource("assets/audio/click.wav", "static")  -- Load click sound
 end
 
 function love.update(dt)
