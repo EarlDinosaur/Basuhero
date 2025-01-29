@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{00000000-0000-0000-0000-000000000000}</ProjectGuid>
+    <ProjectGuid>{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <AssemblyName>ConsoleApplication</AssemblyName>
@@ -29,6 +29,9 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Basuhero</RootNamespace>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -37,6 +40,75 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".git\config" />
+    <None Include=".git\description" />
+    <None Include=".git\HEAD" />
+    <None Include=".git\hooks\applypatch-msg.sample" />
+    <None Include=".git\hooks\commit-msg.sample" />
+    <None Include=".git\hooks\fsmonitor-watchman.sample" />
+    <None Include=".git\hooks\post-update.sample" />
+    <None Include=".git\hooks\pre-applypatch.sample" />
+    <None Include=".git\hooks\pre-commit.sample" />
+    <None Include=".git\hooks\pre-merge-commit.sample" />
+    <None Include=".git\hooks\pre-push.sample" />
+    <None Include=".git\hooks\pre-rebase.sample" />
+    <None Include=".git\hooks\pre-receive.sample" />
+    <None Include=".git\hooks\prepare-commit-msg.sample" />
+    <None Include=".git\hooks\push-to-checkout.sample" />
+    <None Include=".git\hooks\sendemail-validate.sample" />
+    <None Include=".git\hooks\update.sample" />
+    <None Include=".git\index" />
+    <None Include=".git\info\exclude" />
+    <None Include=".git\logs\HEAD" />
+    <None Include=".git\logs\refs\heads\main" />
+    <None Include=".git\logs\refs\remotes\origin\HEAD" />
+    <None Include=".git\objects\pack\pack-2f66f59e07a271a3f32d173ba11abef4e304528a.idx" />
+    <None Include=".git\objects\pack\pack-2f66f59e07a271a3f32d173ba11abef4e304528a.pack" />
+    <None Include=".git\objects\pack\pack-2f66f59e07a271a3f32d173ba11abef4e304528a.rev" />
+    <None Include=".git\packed-refs" />
+    <None Include=".git\refs\heads\main" />
+    <None Include=".git\refs\remotes\origin\HEAD" />
+    <None Include=".vs\Basuhero\v17\.wsuo" />
+    <None Include=".vs\Basuhero\v17\DocumentLayout.json" />
+    <None Include=".vs\VSWorkspaceState.json" />
+    <None Include="assets\CabinBold.ttf" />
+    <None Include="draw.lua" />
+    <None Include="gameover.lua" />
+    <None Include="levelSelect.lua" />
+    <None Include="main.lua" />
+    <None Include="menu.lua" />
+    <None Include="playing.lua" />
+    <None Include="README.md" />
+    <None Include="utils.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".git\ms-persist.xml" />
+    <Content Include="assets\audio\click.wav" />
+    <Content Include="assets\audio\goodluckbabe.mp3" />
+    <Content Include="assets\audio\hottogo.mp3" />
+    <Content Include="assets\audio\pinkponyclub.mp3" />
+    <Content Include="assets\images\apple.png" />
+    <Content Include="assets\images\banana.png" />
+    <Content Include="assets\images\Basuhero_Logo.png" />
+    <Content Include="assets\images\bottle.png" />
+    <Content Include="assets\images\box.png" />
+    <Content Include="assets\images\can.png" />
+    <Content Include="assets\images\compost.png" />
+    <Content Include="assets\images\easybg.png" />
+    <Content Include="assets\images\fishbone.png" />
+    <Content Include="assets\images\hardbg.png" />
+    <Content Include="assets\images\heart.png" />
+    <Content Include="assets\images\mediumbg.png" />
+    <Content Include="assets\images\nonrec.png" />
+    <Content Include="assets\images\particle.png" />
+    <Content Include="assets\images\poop.png" />
+    <Content Include="assets\images\recycle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".git\objects\info\" />
+    <Folder Include=".git\refs\tags\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>

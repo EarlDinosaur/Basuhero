@@ -1,7 +1,36 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|c:\\users\\a s u s\\source\\repos\\basuhero\\playing.lua||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|solutionrelative:playing.lua||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|c:\\users\\a s u s\\source\\repos\\basuhero\\main.lua||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|solutionrelative:main.lua||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|c:\\users\\a s u s\\source\\repos\\basuhero\\draw.lua||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|solutionrelative:draw.lua||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|c:\\users\\a s u s\\source\\repos\\basuhero\\menu.lua||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|solutionrelative:menu.lua||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|c:\\users\\a s u s\\source\\repos\\basuhero\\levelselect.lua||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|solutionrelative:levelselect.lua||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|c:\\users\\a s u s\\source\\repos\\basuhero\\gameover.lua||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|solutionrelative:gameover.lua||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|c:\\users\\a s u s\\source\\repos\\basuhero\\utils.lua||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{C227ED1D-1911-4D3F-BE2B-8AFA8A2DB92A}|Basuhero.csproj|solutionrelative:utils.lua||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,15 +38,106 @@
       "DocumentGroups": [
         {
           "DockedWidth": 254,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "gameover.lua",
+              "DocumentMoniker": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\gameover.lua",
+              "RelativeDocumentMoniker": "gameover.lua",
+              "ToolTip": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\gameover.lua",
+              "RelativeToolTip": "gameover.lua",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-28T17:44:18.183Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "menu.lua",
+              "DocumentMoniker": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\menu.lua",
+              "RelativeDocumentMoniker": "menu.lua",
+              "ToolTip": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\menu.lua",
+              "RelativeToolTip": "menu.lua",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-28T15:06:50.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "utils.lua",
+              "DocumentMoniker": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\utils.lua",
+              "RelativeDocumentMoniker": "utils.lua",
+              "ToolTip": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\utils.lua",
+              "RelativeToolTip": "utils.lua",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-28T15:06:42.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "levelSelect.lua",
+              "DocumentMoniker": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\levelSelect.lua",
+              "RelativeDocumentMoniker": "levelSelect.lua",
+              "ToolTip": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\levelSelect.lua",
+              "RelativeToolTip": "levelSelect.lua",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-28T14:59:32.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "draw.lua",
+              "DocumentMoniker": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\draw.lua",
+              "RelativeDocumentMoniker": "draw.lua",
+              "ToolTip": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\draw.lua",
+              "RelativeToolTip": "draw.lua",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADsAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-28T14:59:13.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.lua",
+              "DocumentMoniker": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\main.lua",
+              "RelativeDocumentMoniker": "main.lua",
+              "ToolTip": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\main.lua",
+              "RelativeToolTip": "main.lua",
+              "ViewState": "AQIAANoAAAAAAAAAAAAqwDoBAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-28T14:56:10.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "playing.lua",
+              "DocumentMoniker": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\playing.lua",
+              "RelativeDocumentMoniker": "playing.lua",
+              "ToolTip": "C:\\Users\\A S U S\\source\\repos\\Basuhero\\playing.lua",
+              "RelativeToolTip": "playing.lua",
+              "ViewState": "AQIAABcAAAAAAAAAAAAAACIAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-01-28T14:57:19.814Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
