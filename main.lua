@@ -68,7 +68,7 @@ function love.load()
         love.graphics.newImage("assets/images/banana.png"),
         love.graphics.newImage("assets/images/fishbone.png")
     }
-    nonrecImages = {
+    nonrecyclableImages = {
         love.graphics.newImage("assets/images/tissue.png"),
         love.graphics.newImage("assets/images/glass.png"),
         love.graphics.newImage("assets/images/pizzabox.png")
@@ -104,16 +104,16 @@ function love.load()
     -- Define positions for the trash bins below the line
     binPositions = {
         compostable = {x = love.graphics.getWidth() / 2 - 300, y = lineY + 50},
-        nonrec = {x = love.graphics.getWidth() / 2, y = lineY + 50},
+        nonrecyclable = {x = love.graphics.getWidth() / 2, y = lineY + 50},
         recyclable = {x = love.graphics.getWidth() / 2 + 300, y = lineY + 50}
     }
 
-    binOrder = {"compostable", "nonrec", "recyclable"}
+    binOrder = {"compostable", "nonrecyclable", "recyclable"}
 
     -- Load bin images
     binImages = {
         compostable = love.graphics.newImage("assets/images/compost.png"),
-        nonrec = love.graphics.newImage("assets/images/nonrec.png"),
+        nonrecyclable = love.graphics.newImage("assets/images/nonrec.png"),
         recyclable = love.graphics.newImage("assets/images/recycle.png")
     }
 
@@ -167,7 +167,7 @@ function love.update(dt)
                 currentLevel = currentLevel,
                 images = {
                     compostable = compostableImages,
-                    nonrec = nonrecImages,
+                    nonrecyclable = nonrecyclableImages,
                     recyclable = recyclableImages
                 },
                 centerX = centerX,

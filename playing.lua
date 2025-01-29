@@ -94,11 +94,11 @@ function playing.handleInput(params)
 
     -- Handle bin swapping
     if key == "q" then
-        binOrder = {"nonrec", "compostable", "recyclable"}
+        binOrder = {"nonrecyclable", "compostable", "recyclable"}
     elseif key == "w" then
-        binOrder = {"recyclable", "nonrec", "compostable"}
+        binOrder = {"recyclable", "nonrecyclable", "compostable"}
     elseif key == "e" then
-        binOrder = {"compostable", "recyclable", "nonrec"}
+        binOrder = {"compostable", "recyclable", "nonrecyclable"}
     end
 
     -- Handle trash clearing if a valid key was pressed
@@ -139,7 +139,7 @@ function playing.checkTrashClear(params)
     for i, trash in ipairs(trashItems) do
         if trash.touchingLine then
             if (key == "q" and trash.type == "compostable") or
-               (key == "w" and trash.type == "nonrec") or
+               (key == "w" and trash.type == "nonrecyclable") or
                (key == "e" and trash.type == "recyclable") then
                 table.remove(trashItems, i)
                 -- Apply score multiplier based on difficulty

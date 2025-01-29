@@ -3,31 +3,31 @@ local utils = {}
 function utils.spawnTrash(params)
     local trashType
     local trashImage
-    local types = {"compostable", "nonrec", "recyclable"}
+    local types = {"compostable", "nonrecyclable", "recyclable"}
     trashType = types[math.random(#types)]
 
     -- Select image based on level and type
     if params.currentLevel == "easy" then
         if trashType == "compostable" then
             trashImage = params.images.compostable[1]
-        elseif trashType == "nonrec" then
-            trashImage = params.images.nonrec[1]
+        elseif trashType == "nonrecyclable" then
+            trashImage = params.images.nonrecyclable[1]
         elseif trashType == "recyclable" then
             trashImage = params.images.recyclable[1]
         end
     elseif params.currentLevel == "medium" then
         if trashType == "compostable" then
             trashImage = params.images.compostable[math.random(1,2)]
-        elseif trashType == "nonrec" then
-            trashImage = params.images.nonrec[math.random(1,2)]
+        elseif trashType == "nonrecyclable" then
+            trashImage = params.images.nonrecyclable[math.random(1,2)]
         elseif trashType == "recyclable" then
             trashImage = params.images.recyclable[math.random(1,2)]
         end
     elseif params.currentLevel == "hard" then
         if trashType == "compostable" then
             trashImage = params.images.compostable[math.random(#params.images.compostable)]
-        elseif trashType == "nonrec" then
-            trashImage = params.images.nonrec[math.random(#params.images.nonrec)]
+        elseif trashType == "nonrecyclable" then
+            trashImage = params.images.nonrecyclable[math.random(#params.images.nonrecyclable)]
         elseif trashType == "recyclable" then
             trashImage = params.images.recyclable[math.random(#params.images.recyclable)]
         end
