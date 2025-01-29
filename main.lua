@@ -69,8 +69,8 @@ function love.load()
         love.graphics.newImage("assets/images/fishbone.png")
     }
     nonrecImages = {
-        love.graphics.newImage("assets/images/glass.png"),
         love.graphics.newImage("assets/images/tissue.png"),
+        love.graphics.newImage("assets/images/glass.png"),
         love.graphics.newImage("assets/images/pizzabox.png")
     }
 
@@ -112,7 +112,7 @@ function love.load()
 
     -- Load bin images
     binImages = {
-        compostable = love.graphics.newImage("assets/images/compost.png"),  -- Example image paths
+        compostable = love.graphics.newImage("assets/images/compost.png"),
         nonrec = love.graphics.newImage("assets/images/nonrec.png"),
         recyclable = love.graphics.newImage("assets/images/recycle.png")
     }
@@ -142,7 +142,6 @@ function love.load()
     trashSounds = {
         sound1 = love.audio.newSource("assets/audio/trash1.wav", "static"),
         sound2 = love.audio.newSource("assets/audio/trash2.wav", "static"),
-        sound3 = love.audio.newSource("assets/audio/trash3.wav", "static")
     }
 
     fartSound = love.audio.newSource("assets/audio/fart.mp3", "static")  -- Load fart sound

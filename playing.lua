@@ -11,7 +11,7 @@ local scoreMultipliers = {
 local function playRandomTrashSound(trashSounds, volume)
     local sounds = {trashSounds.sound1, trashSounds.sound2, trashSounds.sound3}
     local randomSound = sounds[love.math.random(#sounds)]
-    randomSound:setVolume(volume.effects * 0.5)
+    randomSound:setVolume(volume.effects * 0.25)
     randomSound:play()
 end
 
