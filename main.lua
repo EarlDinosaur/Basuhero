@@ -141,7 +141,7 @@ function love.load()
     -- Use a built-in Love2D font or another available font if CuteFont.ttf is not available
     cuteFont = love.graphics.newFont(32)  -- Use a default font with size 32
 
-     trashSounds = {
+    trashSounds = {
         sound1 = love.audio.newSource("assets/audio/trash1.wav", "static"),
         sound2 = love.audio.newSource("assets/audio/trash2.wav", "static"),
     }
@@ -151,7 +151,6 @@ function love.load()
 end
 
 function love.update(dt)
-
     backgroundTimer = backgroundTimer + dt
     if backgroundTimer >= backgroundTransitionTime then
         backgroundTimer = 0
@@ -180,41 +179,41 @@ function love.update(dt)
             table.insert(trashItems, newTrash)
             timer = 0
         end
+    end
+
+    -- Update trash positions and check for collisions
+    for i = #trashItems, 1, -1 do
+        local trash = trashItems[i]
+        trash.y = trash.y + fallSpeed * dt
+        trash.rotation = trash.rotation + trash.rotationSpeed * dt
+
+        -- Check if trash is touching the line
+        if trash.y + trash.height >= lineY and not trash.touchingLine then
+            trash.touchingLine = true
         end
 
-        -- Update trash positions and check for collisions
-        for i = #trashItems, 1, -1 do
-            local trash = trashItems[i]
-            trash.y = trash.y + fallSpeed * dt
-            trash.rotation = trash.rotation + trash.rotationSpeed * dt
-
-            -- Check if trash is touching the line
-            if trash.y + trash.height >= lineY and not trash.touchingLine then
-                trash.touchingLine = true
+        -- Remove trash and decrease lives if it fully crosses the line
+        if trash.touchingLine and trash.y + trash.height > lineY + trash.height then
+            table.remove(trashItems, i)
+            lives = lives - 1
+            if lives <= 0 then
+                endGame()
             end
+        end
 
-            -- Remove trash and decrease lives if it fully crosses the line
-            if trash.touchingLine and trash.y + trash.height > lineY + trash.height then
-                table.remove(trashItems, i)
-                lives = lives - 1
-                if lives <= 0 then
-                    endGame()
-                end
-            end
-
-        -- Update gradient transition   
+    -- Update gradient transition   
         if gradientTransitionProgress < 1 then
             gradientTransitionProgress = math.min(1, gradientTransitionProgress + dt)
-            end
+        end
 
-             if shakeTime > 0 then
+        if shakeTime > 0 then
             shakeTime = shakeTime - dt
-            if shakeTime < 0 then shakeTime = 0 end
+            if shakeTime < 0 then 
+                shakeTime = 0 
+            end
         end
-        end
-        end
-        
-
+    end
+end
 
 function love.draw()
     if gameState == "menu" then
@@ -267,7 +266,6 @@ function love.draw()
             currentLevel = currentLevel
         })
     end 
-    
 end
 
 function love.keypressed(key)
@@ -313,8 +311,8 @@ function love.keypressed(key)
             gradientTransitionProgress = gradientTransitionProgress,
             shakeTime = shakeTime,
             shakeDuration = shakeDuration,
-            volume = volume,  -- Include volume parameter
-            sfx = sfx  -- Add this line
+            volume = volume,
+            sfx = sfx
         })
     
         -- Update all returned states

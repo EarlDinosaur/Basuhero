@@ -14,7 +14,7 @@ local function playRandomTrashSound(trashSounds, volume)
     randomSound:play()
 end
 
- local gradientColors = {
+local gradientColors = {
     {{0.5, 0.7, 1}, {0.2, 0.4, 0.8}},  -- Light blue to darker blue
     {{0.8, 0.5, 0.5}, {1, 0.7, 0.7}},  -- Soft pink to light red
     {{0.6, 0.8, 0.4}, {0.3, 0.6, 0.2}},  -- Light green to darker green
@@ -41,11 +41,10 @@ function playing.drawPlaying(params)
     -- Draw background
     params.draw.drawLevelBackground(params.currentBackground)
 
-     local screenWidth, screenHeight = love.graphics.getDimensions()
-     local scaleX = screenWidth / currentBackground:getWidth()
-        local scaleX = screenWidth / currentBackground:getWidth()
-            local scaleY = screenHeight / currentBackground:getHeight()
-            love.graphics.draw(currentBackground, 0, 0, 0, scaleX, scaleY)
+    local screenWidth, screenHeight = love.graphics.getDimensions()
+    local scaleX = screenWidth / currentBackground:getWidth()
+    local scaleY = screenHeight / currentBackground:getHeight()
+    love.graphics.draw(currentBackground, 0, 0, 0, scaleX, scaleY)
 
 
     -- Draw trash items
@@ -84,9 +83,8 @@ function playing.drawPlaying(params)
     params.draw.drawHearts(params.lives, params.heartImage)
     
     if shakeTime > 0 then
-    love.graphics.pop()
+        love.graphics.pop()
     end
- 
 end
 
 function drawGradient(currentGradientIndex, nextGradientIndex, gradientTransitionProgress, gradientColors)
@@ -158,7 +156,6 @@ function playing.handleInput(params)
             binOrder = binOrder
         }
     end
-
     return { binOrder = binOrder }
 end
 
@@ -183,18 +180,17 @@ function playing.checkTrashClear(params)
             if (key == "q" and trash.type == "compostable") or
                (key == "w" and trash.type == "nonrecyclable") or
                (key == "e" and trash.type == "recyclable") then
-               table.remove(trashItems, i)
+                table.remove(trashItems, i)
                 -- Apply score multiplier based on difficulty
-               local multiplier = scoreMultipliers[currentLevel] or 1
-               score = score + (100 * multiplier)
+                local multiplier = scoreMultipliers[currentLevel] or 1
+                score = score + (100 * multiplier)
                 
-               shakeTime = 0.5
-               shakeDuration = 0.3
-               shakeMagnitude = 8
+                shakeTime = 0.5
+                shakeDuration = 0.3
+                shakeMagnitude = 8
                 currentGradientIndex = nextGradientIndex
                 nextGradientIndex = math.random(#gradientColors)
                 gradientTransitionProgress = 0
-               
 
                 return score, currentGradientIndex, nextGradientIndex, gradientTransitionProgress, shakeTime, shakeDuration
             else
