@@ -186,8 +186,8 @@ function playing.checkTrashClear(params)
                 score = score + (100 * multiplier)
                 
                 shakeTime = 0.5
-                shakeDuration = 0.3
-                shakeMagnitude = 8
+                shakeDuration = 0.1
+                shakeMagnitude = 3
                 currentGradientIndex = nextGradientIndex
                 nextGradientIndex = math.random(#gradientColors)
                 gradientTransitionProgress = 0
