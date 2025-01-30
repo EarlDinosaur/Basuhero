@@ -26,6 +26,7 @@ local volume = {
     effects = 1.0
 }
 
+
 local levelSelectOptions = {"Dumpster Diving", "Rags to Riches", "Trash King", "Back to Main Menu"}
 local selectedLevelOption = 1
 
@@ -41,6 +42,14 @@ local levelSelect = require ("levelSelect")
 local playing = require("playing")
 local gameover = require('gameover')
 local utils = require("utils")
+
+local gradientColors = {
+    {{0.5, 0.7, 1}, {0.2, 0.4, 0.8}},  -- Light blue to darker blue
+    {{0.8, 0.5, 0.5}, {1, 0.7, 0.7}},  -- Soft pink to light red
+    {{0.6, 0.8, 0.4}, {0.3, 0.6, 0.2}},  -- Light green to darker green
+    {{196/255, 153/255, 33/255}, {232/255, 173/255, 7/255}}  -- Yellowish gradient
+}
+
 
 function love.load()
     love.window.setTitle("BASUHERO - Trash Sorting Game")
@@ -60,7 +69,7 @@ function love.load()
     currentBackground = nil
 
     trashItems = {}  -- Table to store falling trash items
-    spawnInterval = 0.5  -- Time in seconds between spawns
+    spawnInterval = 1  -- Time in seconds between spawns
     timer = 0  -- Timer to control the interval
 
     compostableImages = {
@@ -85,17 +94,10 @@ function love.load()
     trashHeight = 100
     centerX = love.graphics.getWidth() / 2 - trashWidth / 2
 
-    gradientColors = {
-        {{0.5, 0.7, 1}, {0.2, 0.4, 0.8}},  -- Light blue to darker blue
-        {{0.8, 0.5, 0.5}, {1, 0.7, 0.7}},  -- Soft pink to light red
-        {{0.6, 0.8, 0.4}, {0.3, 0.6, 0.2}},  -- Light green to darker green
-        {{196/255, 153/255, 33/255}, {232/255, 173/255, 7/255}}  -- Yellowish gradient
-    }
-
 
     currentGradientIndex = 1
     nextGradientIndex = 2
-    gradientTransitionProgress = 1  -- Start fully transitioned to the first color
+    gradientTransitionProgress = 1
 
     -- Define the line position and game state
     lineY = love.graphics.getHeight() - 150  -- Position of the "clear line"
@@ -139,10 +141,11 @@ function love.load()
     -- Use a built-in Love2D font or another available font if CuteFont.ttf is not available
     cuteFont = love.graphics.newFont(32)  -- Use a default font with size 32
 
-    trashSounds = {
+     trashSounds = {
         sound1 = love.audio.newSource("assets/audio/trash1.wav", "static"),
         sound2 = love.audio.newSource("assets/audio/trash2.wav", "static"),
     }
+
 
     fartSound = love.audio.newSource("assets/audio/fart.mp3", "static")  -- Load fart sound
 end
@@ -177,6 +180,7 @@ function love.update(dt)
             table.insert(trashItems, newTrash)
             timer = 0
         end
+        end
 
         -- Update trash positions and check for collisions
         for i = #trashItems, 1, -1 do
@@ -190,27 +194,34 @@ function love.update(dt)
             end
 
             -- Remove trash and decrease lives if it fully crosses the line
-            if trash.y >= lineY + 30 then
+            if trash.touchingLine and trash.y + trash.height > lineY + trash.height then
                 table.remove(trashItems, i)
                 lives = lives - 1
                 if lives <= 0 then
                     endGame()
                 end
             end
-        end
 
-        -- Update shake timer
-        if shakeTime > 0 then
+        -- Update gradient transition   
+        if gradientTransitionProgress < 1 then
+            gradientTransitionProgress = math.min(1, gradientTransitionProgress + dt)
+            end
+
+             if shakeTime > 0 then
             shakeTime = shakeTime - dt
+            if shakeTime < 0 then shakeTime = 0 end
         end
-    end
-end
+        end
+        end
+        
+
 
 function love.draw()
     if gameState == "menu" then
         love.graphics.setFont(cuteFont)
         menu.draw(backgroundImages, backgroundTimer, backgroundTransitionTime, currentBackgroundIndex,  menuOptions, menuState, selectedOption, logoImage, cuteFont, menuFont)
-    elseif gameState == "levelSelect" then
+    
+        elseif gameState == "levelSelect" then
         levelSelect.draw({
             fonts = {
                 title = titleFont,
@@ -224,6 +235,7 @@ function love.draw()
             backgroundTimer = backgroundTimer,
             backgroundTransitionTime = backgroundTransitionTime
         })
+
     elseif gameState == "playing" then
         playing.drawPlaying({
             font = font,
@@ -302,7 +314,7 @@ function love.keypressed(key)
             shakeTime = shakeTime,
             shakeDuration = shakeDuration,
             volume = volume,  -- Include volume parameter
-            trashSounds = trashSounds  -- Add this line
+            sfx = sfx  -- Add this line
         })
     
         -- Update all returned states
@@ -345,6 +357,9 @@ end
 
 function startGame()
     local resetResult = utils.resetGame({
+        currentGradientIndex = 1,
+        nextGradientIndex = 2,
+        gradientTransitionProgress = 0,
         trashItems = trashItems,
         timer = timer,
         score = score,
@@ -366,25 +381,30 @@ function startGame()
     if currentLevel == "easy" then
         local bpm = 107
         local beatsPerSecond = bpm / 60
-        spawnInterval = 1 / beatsPerSecond
-        fallSpeed = 250
+        spawnInterval = 2 / beatsPerSecond
         lineY = love.graphics.getHeight() - 125
+        local spawnY = -30
+        local fallDistance = lineY - spawnY
+        fallSpeed = fallDistance / spawnInterval
     elseif currentLevel == "medium" then
         local bpm = 117
         local beatsPerSecond = bpm / 60
-        spawnInterval = 1 / beatsPerSecond
-        fallSpeed = 300
+        spawnInterval = 2 / beatsPerSecond
         lineY = love.graphics.getHeight() - 125
+        local spawnY = -30
+        local fallDistance = lineY - spawnY
+        fallSpeed = fallDistance / spawnInterval
     elseif currentLevel == "hard" then
         local bpm = 140
         local beatsPerSecond = bpm / 60
-        spawnInterval = 1 / beatsPerSecond
-        fallSpeed = 350
+        spawnInterval = 2 / beatsPerSecond
         lineY = love.graphics.getHeight() - 125
+        local spawnY = -30
+        local fallDistance = lineY - spawnY
+        fallSpeed = fallDistance / spawnInterval
     end
 end
 
--- Remove resetGame from main.lua since it's now in utils
 
 function endGame()
     gameState = "gameOver"
