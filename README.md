@@ -1,5 +1,7 @@
 # BASUHERO
 
+![Basuhero Logo](/assets/images/Basuhero_Logo.png)
+
 A trash sorting game built with LÖVE (Love2D) where players must sort falling trash into the correct bins before they cross the line.
 
 ## Description
@@ -12,12 +14,13 @@ BASUHERO is an educational rhythm-based game that teaches players about proper w
 
 ## Installation
 
-1. Download and install LÖVE from https://love2d.org/
+1. Download and install LÖVE from [https://love2d.org/](https://love2d.org/)
 2. Clone or download this repository
 3. Run the game by either:
    - Dragging the game folder onto the LÖVE executable
    - Double-clicking the .love file (if created)
    - Running from command line: `love /path/to/game/folder`
+   - **Alternatively**, download the compiled executable from the [Releases](https://github.com/EarlDinosaur/Basuhero/releases) and unzip it then run it directly.
 
 ## How to Play
 
